@@ -17,5 +17,24 @@ commit-msg:
 
 pre-push:
   commands:
+    branch-name:
+      run: |
+        branch=$(git rev-parse --abbrev-ref HEAD)
+
+        if echo "$branch" | grep -qE '^(main|staging|develop)$'; then
+          exit 0
+        fi
+
+        if ! echo "$branch" | grep -qE '^(feat|fix|chore|hotfix)/[a-z0-9-]+$'; then
+          echo "❌ Branch name '$branch' is invalid!"
+          echo ""
+          echo "✅ Allowed formats:"
+          echo "   feat/feature-name"
+          echo "   fix/bug-name"
+          echo "   chore/update-deps"
+          echo "   hotfix/bug-name"
+          echo "   develop, staging, main"
+          exit 1
+        fi
     tests:
       run: bun run test:ci
