@@ -8,6 +8,7 @@ import { ThemedView } from "@/components/themed-view";
 import { Collapsible } from "@/components/ui/collapsible";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Fonts } from "@/constants/theme";
+import images from "@assets/images";
 
 export default function TabTwoScreen() {
   return (
@@ -66,7 +67,7 @@ export default function TabTwoScreen() {
           provide files for different screen densities
         </ThemedText>
         <Image
-          source={require("@/assets/images/react-logo.png")}
+          source={images.reactLogo}
           style={{ width: 100, height: 100, alignSelf: "center" }}
         />
         <ExternalLink href="https://reactnative.dev/docs/images">
