@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
+# hsum-chaint
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+⚠️ **Note: This is a starter project and is currently a work-in-progress. Features are not completed yet and are actively being added.**
 
-## Get started
+This is a starter project template built with [Expo](https://expo.dev) and React Native. It utilizes a modern tech stack to serve as a strong foundation for future development.
 
-1. Install dependencies
+## Tech Stack
+
+- **Framework:** React Native / Expo
+- **Navigation:** Expo Router (`src/app`)
+- **Styling:** Tailwind CSS (`tailwindcss`) with `uniwind` and `class-variance-authority`
+- **Data Fetching:** React Query (`@tanstack/react-query`)
+- **Forms & Validation:** React Hook Form (`react-hook-form`) & Zod (`zod`)
+- **Local Storage:** React Native MMKV (`react-native-mmkv`)
+- **Animations:** React Native Reanimated (`react-native-reanimated`)
+- **Testing:** Jest & React Native Testing Library
+- **Formatting/Linting:** ESLint, Prettier, Lefthook, Commitlint
+
+## Project Directory
+
+The main logic is organized under the `src/` directory:
+
+- `src/app/` - App navigation & screens (Expo Router)
+- `src/components/` - Reusable UI components
+- `src/constants/` - App-wide constants
+- `src/hooks/` - Custom React hooks
+- `src/lib/` - Shared libraries, context and utilities
+- `src/css/` - Global styling configurations
+
+## Setup & Getting Started
+
+1. Install dependencies (we use `bun`, as indicated by `bun.lock`):
 
    ```bash
-   npm install
+   bun install
    ```
 
-2. Start the app
+2. Start the development server:
 
    ```bash
-   npx expo start
+   bun run start
    ```
 
-In the output, you'll find options to open the app in a
+In the output, you'll find options to open the app in a:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Android emulator
+- iOS simulator
+- Expo Go, a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Work in Progress (WIP)
 
-## Get a fresh project
+Because this repository is considered a **starter project** template, many expected features have not yet been finished. It is currently under active development, so expect frequent updates and structural changes as new capabilities are added.
 
-When you're ready, run:
+## Scripts
 
-```bash
-npm run reset-project
-```
+Available npm/bun scripts mapped in `package.json`:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- `start` - Start Expo development server
+- `android` / `ios` / `web` - Open specific local environment
+- `lint` - Run Expo linter and fix basic errors
+- `format` - Format source files with Prettier
+- `test` - Run Jest tests in watch mode
