@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   extends: ["@commitlint/config-conventional"],
   rules: {
     // not allow to use uppercase letter in commit message
