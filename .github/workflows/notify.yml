@@ -1,0 +1,31 @@
+name: Telegram Notify
+
+on:
+  pull_request_target:
+    types: [opened, closed]
+    branches: [main, staging, develop]
+  push:
+    branches: [main, staging, develop]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Opened
+        if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🔔 New PR Opened
+            👤 ${{ github.actor }}
+            📌 ${{ github.event.pull_request.title }}
+            🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
+            🔗 ${{ github.event.pull_request.html_url }}
+
+      - name: PR Merged
+        if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets
