@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: PR Opened
         if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
 
       - name: PR Updated
         if: github.event_name == 'pull_request_target' && github.event.action == 'synchronize'
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -43,7 +43,7 @@ jobs:
 
       - name: PR Merged
         if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
 
       - name: Push to main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
 
       - name: Push to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -84,7 +84,7 @@ jobs:
 
       - name: Push to develop
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        uses: Salmansha08/telegram-github-action@main
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
