@@ -17,8 +17,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             🔔 New PR Opened
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -30,8 +32,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             🔄 PR Updated
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -43,8 +47,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             ✅ PR Merged
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -56,8 +62,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             🚀 Production Deployed
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
 
@@ -67,8 +75,10 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             🧪 Staging Deployed
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
 
@@ -78,7 +88,9 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: 404
           message: |
             🔧 Develop Updated
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
