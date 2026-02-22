@@ -19,6 +19,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🔔 New PR Opened
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -32,6 +33,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🔄 PR Updated
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -45,6 +47,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             ✅ PR Merged
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
@@ -58,6 +61,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🚀 Production Deployed
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
 
@@ -69,6 +73,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🧪 Staging Deployed
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
 
@@ -80,5 +85,6 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🔧 Develop Updated
+            📦 ${{ github.repository }}
             👤 ${{ github.actor }}
             💬 ${{ github.event.head_commit.message }}
