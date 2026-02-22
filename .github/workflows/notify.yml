@@ -28,4 +28,44 @@ jobs:
         if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            ✅ PR Merged
+            👤 ${{ github.actor }}
+            📌 ${{ github.event.pull_request.title }}
+            🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
+            🔗 ${{ github.event.pull_request.html_url }}
+
+      - name: Push to main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🚀 Production Deployed
+            👤 ${{ github.actor }}
+            💬 ${{ github.event.head_commit.message }}
+
+      - name: Push to staging
+        if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🧪 Staging Deployed
+            👤 ${{ github.actor }}
+            💬 ${{ github.event.head_commit.message }}
+
+      - name: Push to develop
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🔧 Develop Updated
+            👤 ${{ github.actor }}
+            💬 ${{ github.event.head_commit.message }}
