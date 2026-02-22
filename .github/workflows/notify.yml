@@ -13,11 +13,11 @@ jobs:
     steps:
       - name: PR Opened
         if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             🔔 New PR Opened
             📦 ${{ github.repository }}
@@ -28,11 +28,11 @@ jobs:
 
       - name: PR Updated
         if: github.event_name == 'pull_request_target' && github.event.action == 'synchronize'
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             🔄 PR Updated
             📦 ${{ github.repository }}
@@ -43,11 +43,11 @@ jobs:
 
       - name: PR Merged
         if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             ✅ PR Merged
             📦 ${{ github.repository }}
@@ -58,11 +58,11 @@ jobs:
 
       - name: Push to main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             🚀 Production Deployed
             📦 ${{ github.repository }}
@@ -71,11 +71,11 @@ jobs:
 
       - name: Push to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             🧪 Staging Deployed
             📦 ${{ github.repository }}
@@ -84,11 +84,11 @@ jobs:
 
       - name: Push to develop
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        uses: appleboy/telegram-action@master
+        uses: Salmansha08/telegram-github-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message_thread_id: 404
+          message_thread_id: ${{ secrets.TELEGRAM_GITHUB_TOPIC_ID }}
           message: |
             🔧 Develop Updated
             📦 ${{ github.repository }}
