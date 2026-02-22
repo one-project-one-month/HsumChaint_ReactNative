@@ -2,7 +2,7 @@ name: Telegram Notify
 
 on:
   pull_request_target:
-    types: [opened, closed]
+    types: [opened, closed, synchronize]
     branches: [main, staging, develop]
   push:
     branches: [main, staging, develop]
@@ -19,6 +19,19 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             🔔 New PR Opened
+            👤 ${{ github.actor }}
+            📌 ${{ github.event.pull_request.title }}
+            🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
+            🔗 ${{ github.event.pull_request.html_url }}
+
+      - name: PR Updated
+        if: github.event_name == 'pull_request_target' && github.event.action == 'synchronize'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🔄 PR Updated
             👤 ${{ github.actor }}
             📌 ${{ github.event.pull_request.title }}
             🌿 ${{ github.head_ref }} → ${{ github.base_ref }}
