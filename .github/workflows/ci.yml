@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  pull_request_target:
+    branches: [develop] # For contributors
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun run test:ci

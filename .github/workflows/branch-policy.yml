@@ -1,0 +1,49 @@
+name: Branch Policy
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+    branches: [main, staging, develop]
+
+jobs:
+  check-pr-target:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR target branch
+        run: |
+          base="${{ github.base_ref }}"
+          head="${{ github.head_ref }}"
+          is_fork="${{ github.event.pull_request.head.repo.fork }}"
+
+          echo "PR: $head → $base"
+          echo "Fork: $is_fork"
+
+          # Fork PR → develop only
+          if [ "$is_fork" = "true" ]; then
+            if [ "$base" != "develop" ]; then
+              echo "❌ Fork PRs must target 'develop' only!"
+              exit 1
+            fi
+            echo "✅ Fork PR targeting develop"
+            exit 0
+          fi
+
+          # Internal team rules
+          if echo "$head" | grep -qE '^hotfix/'; then
+            if [ "$base" != "main" ]; then
+              echo "❌ hotfix/* must target main"
+              exit 1
+            fi
+          fi
+
+          if [ "$head" = "develop" ] && [ "$base" != "staging" ]; then
+            echo "❌ develop must target staging"
+            exit 1
+          fi
+
+          if [ "$head" = "staging" ] && [ "$base" != "main" ]; then
+            echo "❌ staging must target main"
+            exit 1
+          fi
+
+          echo "✅ PR target is valid!"
