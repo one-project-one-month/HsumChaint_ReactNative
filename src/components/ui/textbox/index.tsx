@@ -42,6 +42,7 @@ export type TextboxProps = {
   leftIconButtonProps?: TouchableOpacityProps;
   rightIcon?: ReactNode;
   rightIconButtonProps?: TouchableOpacityProps;
+  containerClassName?: string;
 } & VariantProps<typeof textboxVariants> &
   ComponentPropsWithRef<typeof TextInput> &
   TextInputProps;
@@ -53,7 +54,9 @@ export const Textbox = ({
   leftIconButtonProps,
   rightIcon,
   rightIconButtonProps,
+  containerClassName,
   className,
+  numberOfLines,
   ...props
 }: TextboxProps) => {
   const lIcon =
@@ -72,14 +75,28 @@ export const Textbox = ({
       : rightIcon;
 
   return (
-    <View className={cn(textboxVariants({ variant, size }), className)}>
-      {lIcon ? <TouchableOpacity {...leftIconButtonProps}>{lIcon}</TouchableOpacity> : null}
+    <View className={cn(textboxVariants({ variant, size }), containerClassName)}>
+      {lIcon ? (
+        <View className="self-stretch">
+          <TouchableOpacity {...leftIconButtonProps}>{lIcon}</TouchableOpacity>
+        </View>
+      ) : null}
       <TextInput
+        className={cn(
+          "flex-1 text-base leading-6 font-normal text-natural-black m-0 p-0",
+          className,
+        )}
+        style={{ height: numberOfLines ? numberOfLines * 25 : undefined }}
         placeholderTextColor="#939393"
-        className="flex-1 items-center text-[16px] text-natural-black"
+        textAlignVertical="top"
+        numberOfLines={numberOfLines}
         {...props}
       />
-      {rIcon ? <TouchableOpacity {...rightIconButtonProps}>{rIcon}</TouchableOpacity> : null}
+      {rIcon ? (
+        <View className="self-stretch">
+          <TouchableOpacity {...rightIconButtonProps}>{rIcon}</TouchableOpacity>
+        </View>
+      ) : null}
     </View>
   );
 };

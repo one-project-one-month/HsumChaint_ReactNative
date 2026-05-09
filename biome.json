@@ -7,7 +7,15 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!dist", "!coverage", "!android", "!ios", "!.expo", "!**/*.d.ts"]
+    "includes": [
+      "**",
+      "!dist",
+      "!coverage",
+      "!android",
+      "!ios",
+      "!.expo",
+      "!**/*.d.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -62,7 +70,7 @@
   },
   "overrides": [
     {
-      "includes": ["*.test.ts", "*.test.tsx"],
+      "includes": ["src/**/*.test.ts", "src/**/*.test.tsx"],
       "linter": {
         "rules": {
           "suspicious": {

@@ -12,6 +12,7 @@ export const buttonVariants = cva("flex-row items-center justify-center rounded-
       outline: "bg-natural-white border-yellow-700 border",
     },
     size: {
+      xs: "p-1 gap-1 rounded-lg",
       sm: "px-2 py-1.5",
       md: "px-4 py-3",
       lg: "px-5 py-4",
@@ -36,6 +37,7 @@ const textVariants = cva("font-medium text-center leading-6 text-base", {
       outline: "text-yellow-700",
     },
     size: {
+      xs: "text-xs",
       sm: "text-sm",
       md: "text-base",
       lg: "text-xl",
@@ -59,6 +61,7 @@ const iconColorVariants = {
   outline: "#aa7e3a",
 };
 const iconSizeVariants = {
+  xs: 16,
   sm: 16,
   md: 20,
   lg: 24,

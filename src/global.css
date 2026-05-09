@@ -40,4 +40,6 @@
 
   --color-warning: #ef233c;
   --color-success: #29bf12;
+
+  --shadow-drop: 2px 2px 8px 0px #00000010;
 }

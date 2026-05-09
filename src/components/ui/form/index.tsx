@@ -44,8 +44,8 @@ export const FormInputField = <
             ref={field.ref}
             value={field.value}
             onChangeText={field.onChange}
+            containerClassName={fieldState.invalid ? "border-warning border" : ""}
             {...props}
-            className={fieldState.invalid ? "border-warning border" : ""}
           />
           {fieldState.error && (
             <Text className="text-xs text-warning">{fieldState.error.message}</Text>
